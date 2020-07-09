@@ -24,3 +24,12 @@
 // !!*Try to do a random one^ so that it does not just give you the same 3 
 
 // clear function to clear it out whenever you make a new one.
+console.log("test");
+var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=Whiskey"
+
+$.ajax({
+    url: cocktailURL,
+    method: "GET"
+}).then(function(response){
+    console.log(response)
+})
