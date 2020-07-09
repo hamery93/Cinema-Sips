@@ -1,9 +1,61 @@
-// Pseudo Code
+var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1"
+var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
 
-// Get API URL and keys
 
-// get user input from dropdown list
+//Search through movies in for loop - if genre = BLAH then print
 
+//This function will grab the user's choice from the dropdown list and return an array
+//that contains the names of the liquor and movie genre that corresponds to that mood.
+function delegateUserInput() {
+    var pairings = [];
+    //! ID name will depend on what they name the dropdown list in the HTML
+    var userChoice = $("#drop-down").val();
+ 
+  
+    if (userChoice === "happy") {
+      pairings.push("comedy");
+      pairings.push("tequila");
+      liquor = "tequila";
+    } else if (userChoice === "sad") {
+      pairings.push("drama");
+      pairings.push("wine");
+    } else {
+      pairings.push("action");
+      pairings.push("whisky");
+    }
+   return pairings;
+  }
+  
+  delegateUserInput();
+
+//! Make sure to pull from the array in delegateUserInput
+//! Will need to make prettier
+function cocktailPair(){
+    //!This was only for testing. will need user delegated liquor
+    var liquor = "Whiskey";
+
+    $.ajax({
+        url: cocktailURL + liquor,
+        method: "GET"
+    }).then(function(response){
+        var cocktailDiv = $("<div id='cocktail'>");
+        var cocktailCard = $("<div class='card'>");
+        
+        console.log(response);
+        var drinkName = response.drinks[0].strDrink;
+        var drinkName = "Drink Name: " + drinkName;
+
+        var drinkPic = response.drinks[0].strDrinkThumb;
+        var cocktailImage = $("<img src='" +drinkPic + "'>");
+        cocktailImage.attr("style", "width: 100px; height: 100px;");
+
+        cocktailCard.append("Liquor Type:" + liquor, drinkName, cocktailImage);
+        cocktailDiv.append(cocktailCard);
+        $("body").append(cocktailDiv);
+
+    })
+}
+cocktailPair();
 // If statement to determine which word will be appended to url and API
 // - Happy: Comedy - Tequila
 //     - If happy then drink url =
@@ -17,10 +69,18 @@
 // - Print just 1 of each for now
 // - Get from response:
 //     - Movie: Title, movie poster, rating, plot
-//     - Drink: Name, picture, ingredients
+//     - Drink: Name, picture, Liquor
 // - append movie things to it's card, then append card to div
 // - append cocktail things to it's card, then append card to div
 // - append cards to whatever section is delegated in html
 // !!*Try to do a random one^ so that it does not just give you the same 3 
 
 // clear function to clear it out whenever you make a new one.
+console.log("test");
+
+$.ajax({
+    url: cocktailURL,
+    method: "GET"
+}).then(function(response){
+    console.log(response)
+})
