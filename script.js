@@ -8,9 +8,9 @@ var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
 //that contains the names of the liquor and movie genre that corresponds to that mood.
 function delegateUserInput() {
     var pairings = [];
-  
     //! ID name will depend on what they name the dropdown list in the HTML
     var userChoice = $("#drop-down").val();
+ 
   
     if (userChoice === "happy") {
       pairings.push("comedy");
@@ -23,11 +23,38 @@ function delegateUserInput() {
       pairings.push("action");
       pairings.push("whisky");
     }
-    console.log(pairings);
+   return pairings;
   }
   
   delegateUserInput();
 
+//! Make sure to pull from the array in delegateUserInput
+//! Will need to make prettier
+function cocktailPair(){
+    var liquor = "whiskey";
+
+
+    $.ajax({
+        url: cocktailURL + liquor,
+        method: "GET"
+    }).then(function(response){
+        var cocktailDiv = $("<div id='cocktail'>");
+        var cocktailCard = $("<div class='card'>");
+        
+        console.log(response);
+        var drinkName = response.drinks[0].strDrink;
+
+        var drinkPic = response.drinks[0].strDrinkThumb;
+        var cocktailImage = $("<img src='" +drinkPic + "'>");
+        cocktailImage.attr("style", "width: 100px; height: 100px;");
+
+        cocktailCard.append(drinkName, cocktailImage);
+        cocktailDiv.append(cocktailCard);
+        $("body").append(cocktailDiv);
+
+    })
+}
+cocktailPair();
 // If statement to determine which word will be appended to url and API
 // - Happy: Comedy - Tequila
 //     - If happy then drink url =
