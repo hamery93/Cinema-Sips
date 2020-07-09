@@ -1,3 +1,8 @@
+var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1"
+var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
+
+
+//Search through movies in for loop - if genre = BLAH then print
 // Pseudo Code
 
 // Get API URL and keys
@@ -17,10 +22,18 @@
 // - Print just 1 of each for now
 // - Get from response:
 //     - Movie: Title, movie poster, rating, plot
-//     - Drink: Name, picture, ingredients
+//     - Drink: Name, picture, Liquor
 // - append movie things to it's card, then append card to div
 // - append cocktail things to it's card, then append card to div
 // - append cards to whatever section is delegated in html
 // !!*Try to do a random one^ so that it does not just give you the same 3 
 
 // clear function to clear it out whenever you make a new one.
+console.log("test");
+
+$.ajax({
+    url: cocktailURL,
+    method: "GET"
+}).then(function(response){
+    console.log(response)
+})
