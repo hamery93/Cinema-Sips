@@ -3,11 +3,30 @@ var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
 
 
 //Search through movies in for loop - if genre = BLAH then print
-// Pseudo Code
 
-// Get API URL and keys
-
-// get user input from dropdown list
+//This function will grab the user's choice from the dropdown list and return an array
+//that contains the names of the liquor and movie genre that corresponds to that mood.
+function delegateUserInput() {
+    var pairings = [];
+  
+    //! ID name will depend on what they name the dropdown list in the HTML
+    var userChoice = $("#drop-down").val();
+  
+    if (userChoice === "happy") {
+      pairings.push("comedy");
+      pairings.push("tequila");
+      liquor = "tequila";
+    } else if (userChoice === "sad") {
+      pairings.push("drama");
+      pairings.push("wine");
+    } else {
+      pairings.push("action");
+      pairings.push("whisky");
+    }
+    console.log(pairings);
+  }
+  
+  delegateUserInput();
 
 // If statement to determine which word will be appended to url and API
 // - Happy: Comedy - Tequila
