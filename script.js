@@ -31,8 +31,8 @@ function delegateUserInput() {
 //! Make sure to pull from the array in delegateUserInput
 //! Will need to make prettier
 function cocktailPair(){
-    var liquor = "whiskey";
-
+    //!This was only for testing. will need user delegated liquor
+    var liquor = "Whiskey";
 
     $.ajax({
         url: cocktailURL + liquor,
@@ -43,12 +43,13 @@ function cocktailPair(){
         
         console.log(response);
         var drinkName = response.drinks[0].strDrink;
+        var drinkName = "Drink Name: " + drinkName;
 
         var drinkPic = response.drinks[0].strDrinkThumb;
         var cocktailImage = $("<img src='" +drinkPic + "'>");
         cocktailImage.attr("style", "width: 100px; height: 100px;");
 
-        cocktailCard.append(drinkName, cocktailImage);
+        cocktailCard.append("Liquor Type:" + liquor, drinkName, cocktailImage);
         cocktailDiv.append(cocktailCard);
         $("body").append(cocktailDiv);
 
