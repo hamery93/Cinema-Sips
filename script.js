@@ -1,0 +1,26 @@
+// Pseudo Code
+
+// Get API URL and keys
+
+// get user input from dropdown list
+
+// If statement to determine which word will be appended to url and API
+// - Happy: Comedy - Tequila
+//     - If happy then drink url =
+//     - If happy then movie url = 
+// - Sad: Drama - Wine
+// - Angry: Action - Whisky
+
+// ajax call to search for these movies + drinks: if there is an array, just go with the first one
+// - create 2 divs to hold each(movie + alc) save in variable
+// - Create 2 cards to hold each (movie + alc) save in variable
+// - Print just 1 of each for now
+// - Get from response:
+//     - Movie: Title, movie poster, rating, plot
+//     - Drink: Name, picture, ingredients
+// - append movie things to it's card, then append card to div
+// - append cocktail things to it's card, then append card to div
+// - append cards to whatever section is delegated in html
+// !!*Try to do a random one^ so that it does not just give you the same 3 
+
+// clear function to clear it out whenever you make a new one.
