@@ -1,3 +1,56 @@
-h1{
+.callout.primary {
+  padding: 30px;
+  /* background-image: url("https://document-export.canva.com/DAEBg0k4fKA/27/thumbnail/0001-8394103686.png");
+  background-size: contain;
+  background-repeat: no-repeat; */
   
+}
+
+grid-container.fluid {
+  background-color: rgb(187, 127, 255);
+}
+
+.basic-card {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  border: 2px solid #e6e6e6;
+  border-radius: 0;
+  background: #fefefe;
+  box-shadow: none;
+  overflow: hidden;
+  color: #0a0a0a;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr;
+  grid-template-columns: 1fr;
+  -ms-grid-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  margin: 0 auto;
+  width: 50%;
+}
+
+.basic-card > :last-child {
+  margin-bottom: 0;
+}
+
+.basic-card-image {
+  grid-row-end: 4;
+  -ms-grid-row: 1;
+  grid-row-start: 1;
+}
+
+.basic-card-image img {
+  width: auto;
+}
+
+.basic-card-content {
+  border: 0;
+  grid-row-start: 3 / 4;
+  margin: 0;
+  overflow: scroll;
 }
