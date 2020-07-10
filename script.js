@@ -55,7 +55,9 @@ function cocktailPair(){
         method: "GET"
     }).then(function(response){
 
+
         var drinkName = $("<h5>" + response.drinks[0].strDrink + "</h5>");
+
 
         var drinkImage = $("<img src='" + response.drinks[0].strDrinkThumb + "'>");
         drinkImage.attr("style", "width: 200px; height: 200px;");
@@ -67,7 +69,41 @@ function cocktailPair(){
  
     })
 }
-cocktailPair();
+
+
+function moviePair(){
+  var movie = "action";
+
+  $.ajax({
+    url: movieURL, 
+    method: "GET"
+  }).then(function({Title, Poster}){
+    var movieDiv = $("<div id='movie-wrapper'>");
+    var movieCard = $("<div class='card'>");
+
+    console.log(Title, Poster);
+    var movieTitle = $(`<h2>${Title}</h2>`)
+    // var movieTitle = "Title: " + movieTitle;
+
+    var moviePoster = $("<img>").attr({ "src": Poster, "alt": Title });
+    var movieImage = $("<img src='" + moviePoster + "'>");
+    movieImage.attr("style", "width: 200px; height: 200px");
+
+    movieDiv.append( movieTitle, moviePoster);
+    // movieDiv.append(movieCard);
+    $("#movie").append(movieDiv);
+  
+  }) 
+}
+  cocktailPair();
+  moviePair();
+// If statement to determine which word will be appended to url and API
+// - Happy: Comedy - Tequila
+//     - If happy then drink url =
+//     - If happy then movie url = 
+// - Sad: Drama - Wine
+// - Angry: Action - Whisky
+
 
 function clear(){
   $("#drink-picture").empty();
@@ -93,4 +129,4 @@ function clear(){
 // !!*Try to do a random one^ so that it does not just give you the same 3 
 
 // clear function to clear it out whenever you make a new one.
-console.log("test");
+
