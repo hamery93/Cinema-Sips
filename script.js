@@ -1,5 +1,6 @@
 var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1"
 var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
+var userChoice = $("#drop-down").val();
 
 
 //Search through movies in for loop - if genre = BLAH then print
@@ -9,8 +10,6 @@ var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
 function delegateUserInput() {
     var pairings = [];
     //! ID name will depend on what they name the dropdown list in the HTML
-    var userChoice = $("#drop-down").val();
- 
   
     if (userChoice === "happy") {
       pairings.push("comedy");
@@ -56,13 +55,22 @@ function cocktailPair(){
     })
 }
 cocktailPair();
-// If statement to determine which word will be appended to url and API
-// - Happy: Comedy - Tequila
-//     - If happy then drink url =
-//     - If happy then movie url = 
-// - Sad: Drama - Wine
-// - Angry: Action - Whisky
+//*^ For this put picture vs. text in their own divs before putting in the card^^
 
+
+function cocktailAPI(){
+delegatedArray = delegateUserInput();
+cocktailAPI = cocktailURL + delegatedArray[1];
+return cocktailAPI;
+}
+console.log(cocktailAPI());
+
+//Since we are not searching via genre, but rather searching all and pulling out by genre, i will give this it's own function
+function searchMovie(){
+
+}
+
+//*This is done for cocktail
 // ajax call to search for these movies + drinks: if there is an array, just go with the first one
 // - create 2 divs to hold each(movie + alc) save in variable
 // - Create 2 cards to hold each (movie + alc) save in variable
@@ -77,10 +85,3 @@ cocktailPair();
 
 // clear function to clear it out whenever you make a new one.
 console.log("test");
-
-$.ajax({
-    url: cocktailURL,
-    method: "GET"
-}).then(function(response){
-    console.log(response)
-})
