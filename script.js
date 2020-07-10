@@ -32,10 +32,17 @@ function delegateUserInput() {
   }
 
   function cocktailAPI(){
+  // ! I repeat this function call alot
   var delegatedArray = delegateUserInput();
   var cocktailAPI = cocktailURL + delegatedArray[1];
   return cocktailAPI;
   }
+
+  function movieAPI(){
+    var delegatedArray = delegateUserInput();
+    var cocktailAPI = cocktailURL + delegatedArray[1];
+    return cocktailAPI;
+    }
 
 //! Make sure to pull from the array in delegateUserInput
 //! Will need to make prettier
@@ -47,40 +54,30 @@ function cocktailPair(){
         url: cocktailAPI(),
         method: "GET"
     }).then(function(response){
-        var cocktailDiv = $("<div id='cocktail'>");
-        var cocktailCard = $("<div class='card'>");
+
+        var drinkName = $("<h5>" + response.drinks[0].strDrink + "</h5>");
+
+        var drinkImage = $("<img src='" + response.drinks[0].strDrinkThumb + "'>");
+        drinkImage.attr("style", "width: 200px; height: 200px;");
         
-        console.log(response);
-        var drinkName = response.drinks[0].strDrink;
-        var drinkName = "Drink Name: " + drinkName;
-
-        var drinkPic = response.drinks[0].strDrinkThumb;
-        var cocktailImage = $("<img src='" +drinkPic + "'>");
-        cocktailImage.attr("style", "width: 100px; height: 100px;");
-
-        cocktailCard.append("Liquor Type:" + liquor, drinkName, cocktailImage);
-        cocktailDiv.append(cocktailCard);
-        $("body").append(cocktailDiv);
-
+        var liquorType = $("<p> Liquor Type: " + liquor + "</p>");
+        
+        $("#drink-info").append(drinkName, liquorType);
+        $("#drink-picture").append(drinkImage);
+ 
     })
 }
+cocktailPair();
+
+$.ajax({
+  url: movieURL + "action",
+  method: "GET"
+}).then(function(response){
+  console.log(response)
+})
 
 //*^ For this put picture vs. text in their own divs before putting in the card^^
 
-
-//Since we are not searching via genre, but rather searching all and pulling out by genre, i will give this it's own function
-function searchMovie(){
-var delegatedArray = delegateUserInput();
-var movieGenre = delegatedArray[0];
-
-$.ajax({
-  url: movieURL,
-  method: "GET"
-}).then(function(response){
-  console.log(response);
-  // for the response length, if whatever location = movieGenre, print that shit
-})
-}
 
 //*This is done for cocktail
 // ajax call to search for these movies + drinks: if there is an array, just go with the first one
