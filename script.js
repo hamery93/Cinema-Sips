@@ -31,6 +31,12 @@ function delegateUserInput() {
    return pairings;
   }
 
+  function cocktailAPI(){
+  var delegatedArray = delegateUserInput();
+  var cocktailAPI = cocktailURL + delegatedArray[1];
+  return cocktailAPI;
+  }
+
 //! Make sure to pull from the array in delegateUserInput
 //! Will need to make prettier
 function cocktailPair(){
@@ -38,7 +44,7 @@ function cocktailPair(){
     var liquor = "Whiskey";
 
     $.ajax({
-        url: cocktailURL + liquor,
+        url: cocktailAPI(),
         method: "GET"
     }).then(function(response){
         var cocktailDiv = $("<div id='cocktail'>");
@@ -60,13 +66,6 @@ function cocktailPair(){
 }
 
 //*^ For this put picture vs. text in their own divs before putting in the card^^
-
-
-function cocktailAPI(){
-var delegatedArray = delegateUserInput();
-var cocktailAPI = cocktailURL + delegatedArray[1];
-return cocktailAPI;
-}
 
 
 //Since we are not searching via genre, but rather searching all and pulling out by genre, i will give this it's own function
