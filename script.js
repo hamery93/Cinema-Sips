@@ -69,12 +69,12 @@ function cocktailPair(){
 }
 cocktailPair();
 
-$.ajax({
-  url: movieURL + "action",
-  method: "GET"
-}).then(function(response){
-  console.log(response)
-})
+function clear(){
+  $("#drink-picture").empty();
+  $("#drink-info").empty();
+  $("#movie-poster").empty();
+  $("#movie-info").empty();
+}
 
 //*^ For this put picture vs. text in their own divs before putting in the card^^
 
