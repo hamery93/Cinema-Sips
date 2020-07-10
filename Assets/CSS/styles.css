@@ -31,7 +31,6 @@ grid-container.fluid {
   -ms-grid-rows: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
   margin: 0 auto;
-  width: 50%;
 }
 
 .basic-card > :last-child {
