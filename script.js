@@ -18,14 +18,18 @@ function delegateUserInput() {
     } else if (userChoice === "sad") {
       pairings.push("drama");
       pairings.push("wine");
+    } else if (userChoice === "scared") {
+      pairings.push("horror");
+      pairings.push("rum");
+    } else if (userChoice === "romantic") {
+      pairings.push("romantic comedy");
+      pairings.push("champagne");
     } else {
       pairings.push("action");
       pairings.push("whisky");
     }
    return pairings;
   }
-  
-  delegateUserInput();
 
 //! Make sure to pull from the array in delegateUserInput
 //! Will need to make prettier
@@ -54,20 +58,29 @@ function cocktailPair(){
 
     })
 }
-cocktailPair();
+
 //*^ For this put picture vs. text in their own divs before putting in the card^^
 
 
 function cocktailAPI(){
-delegatedArray = delegateUserInput();
-cocktailAPI = cocktailURL + delegatedArray[1];
+var delegatedArray = delegateUserInput();
+var cocktailAPI = cocktailURL + delegatedArray[1];
 return cocktailAPI;
 }
-console.log(cocktailAPI());
+
 
 //Since we are not searching via genre, but rather searching all and pulling out by genre, i will give this it's own function
 function searchMovie(){
+var delegatedArray = delegateUserInput();
+var movieGenre = delegatedArray[0];
 
+$.ajax({
+  url: movieURL,
+  method: "GET"
+}).then(function(response){
+  console.log(response);
+  // for the response length, if whatever location = movieGenre, print that shit
+})
 }
 
 //*This is done for cocktail
