@@ -2,9 +2,7 @@
 
 .callout.primary {
   padding: 30px;
-  /* background-image: url("https://document-export.canva.com/DAEBg0k4fKA/27/thumbnail/0001-8394103686.png");
-  background-size: contain;
-  background-repeat: no-repeat; */
+  background-image: url(/Assets/movie-projector.jpg);
   
 }
 
@@ -66,4 +64,19 @@ img{
 
 .drink-card, .movie-card {
   padding: 20px;
+}
+
+h1 {
+  font-family: 'Rye', cursive;
+  font-size: 94px;
+}
+h2{
+  font-family: 'Special Elite', cursive;
+  font-size: 16px;
+  line-height: 16px;
+  text-align: center;
+}
+
+h5, li{
+  
 }
