@@ -2,12 +2,15 @@
 
 .callout.primary {
   padding: 30px;
-  background-image: url(/Assets/movie-projector.jpg);
-  
+  background-image: url(/Assets/images/header-background.jpg);
 }
 
 .callout.secondary {
   background-color: transparent;
+}
+
+.outer-card{
+  background-color: black;
 }
 
 .basic-card {
