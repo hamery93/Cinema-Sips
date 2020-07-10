@@ -1,27 +1,25 @@
 var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1"
 var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
-var userChoice = $("#drop-down").val();
-
 
 //Search through movies in for loop - if genre = BLAH then print
 
-//This function will grab the user's choice from the dropdown list and return an array
+//This function will be fed the user's choice from the dropdown list and return an array
 //that contains the names of the liquor and movie genre that corresponds to that mood.
-function delegateUserInput() {
+//*this one should be good
+function delegateUserInput(mood) {
     var pairings = [];
-    //! ID name will depend on what they name the dropdown list in the HTML
   
-    if (userChoice === "happy") {
+    if (mood === "happy") {
       pairings.push("comedy");
       pairings.push("tequila");
       liquor = "tequila";
-    } else if (userChoice === "sad") {
+    } else if (mood === "sad") {
       pairings.push("drama");
       pairings.push("wine");
-    } else if (userChoice === "scared") {
+    } else if (mood === "scared") {
       pairings.push("horror");
       pairings.push("rum");
-    } else if (userChoice === "romantic") {
+    } else if (mood === "romantic") {
       pairings.push("romantic comedy");
       pairings.push("champagne");
     } else {
@@ -31,27 +29,25 @@ function delegateUserInput() {
    return pairings;
   }
 
-  function cocktailAPI(){
+  function createDrinkAPI(array){
   // ! I repeat this function call alot
   var delegatedArray = delegateUserInput();
   var cocktailAPI = cocktailURL + delegatedArray[1];
   return cocktailAPI;
   }
 
-  function movieAPI(){
+  function creteMovieAPI(array){
     var delegatedArray = delegateUserInput();
     var cocktailAPI = cocktailURL + delegatedArray[1];
     return cocktailAPI;
     }
 
-//! Make sure to pull from the array in delegateUserInput
-//! Will need to make prettier
-function cocktailPair(){
+function cocktailPair(apiUrl){
     //!This was only for testing. will need user delegated liquor
     var liquor = "Whiskey";
 
     $.ajax({
-        url: cocktailAPI(),
+        url: apiUrl,
         method: "GET"
     }).then(function(response){
 
@@ -71,11 +67,11 @@ function cocktailPair(){
 }
 
 
-function moviePair(){
+function moviePair(apiUrl){
   var movie = "action";
 
   $.ajax({
-    url: movieURL, 
+    url: apiUrl, 
     method: "GET"
   }).then(function({Title, Poster}){
     var movieDiv = $("<div id='movie-wrapper'>");
@@ -95,14 +91,6 @@ function moviePair(){
   
   }) 
 }
-  cocktailPair();
-  moviePair();
-// If statement to determine which word will be appended to url and API
-// - Happy: Comedy - Tequila
-//     - If happy then drink url =
-//     - If happy then movie url = 
-// - Sad: Drama - Wine
-// - Angry: Action - Whisky
 
 
 function clear(){
@@ -112,21 +100,27 @@ function clear(){
   $("#movie-info").empty();
 }
 
-//*^ For this put picture vs. text in their own divs before putting in the card^^
+//make this a function just for now to make sure it works
+function buttonClick(){
+//clears previous choices
+clear();
+
+//retrieves value from the drop down list
+//!change name based on ID
+var mood = $("#drop-down").val();
+
+//chooses the liquor type and movie genre to match the mood
+var drinkAndGenre = delegateUserInput(mood);
+
+//feeds array holding genre and liquor type
+//calls functions to build API URL's using user specified parameters
+var drinkAPI = createDrinkAPI(drinkAndGenre);
+var movieAPI = createMovieAPI(drinkAndGenre);
+
+//calls functions that find movie and cocktail information and populates the page
+cocktailPair(drinkAPI);
+moviePair(movieAPI);
+}
 
 
-//*This is done for cocktail
-// ajax call to search for these movies + drinks: if there is an array, just go with the first one
-// - create 2 divs to hold each(movie + alc) save in variable
-// - Create 2 cards to hold each (movie + alc) save in variable
-// - Print just 1 of each for now
-// - Get from response:
-//     - Movie: Title, movie poster, rating, plot
-//     - Drink: Name, picture, Liquor
-// - append movie things to it's card, then append card to div
-// - append cocktail things to it's card, then append card to div
-// - append cards to whatever section is delegated in html
 // !!*Try to do a random one^ so that it does not just give you the same 3 
-
-// clear function to clear it out whenever you make a new one.
-
