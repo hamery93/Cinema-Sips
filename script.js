@@ -1,3 +1,4 @@
+//Starting URL's for the API's. Search parameters to be added based on user choice. 
 var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1"
 var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i="
 
@@ -16,10 +17,12 @@ function delegateUserInput(mood) {
     } else if (mood === "sad") {
       pairings.push("drama");
       pairings.push("wine");
-    } else if (mood === "scared") {
-      pairings.push("horror");
-      pairings.push("rum");
-    } else if (mood === "romantic") {
+    } 
+    // else if (mood === "scared") {
+    //   pairings.push("horror");
+    //   pairings.push("rum");
+    // } 
+    else if (mood === "romantic") {
       pairings.push("romantic comedy");
       pairings.push("champagne");
     } else {
@@ -101,13 +104,15 @@ function clear(){
 }
 
 //make this a function just for now to make sure it works
-function buttonClick(){
+//!Will need to test this when HTML is ready
+$("#drop-down-list").on("click", function(event){
 //clears previous choices
 clear();
 
-//retrieves value from the drop down list
-//!change name based on ID
-var mood = $("#drop-down").val();
+//retrieves value from the list
+//!Hopefully this works. Might not
+var mood = $(this).attr("id");
+// var mood = $("#drop-down").val();
 
 //chooses the liquor type and movie genre to match the mood
 var drinkAndGenre = delegateUserInput(mood);
@@ -124,3 +129,4 @@ moviePair(movieAPI);
 
 
 // !!*Try to do a random one^ so that it does not just give you the same 3 
+//! Make sure to take our all vars used to test functions
