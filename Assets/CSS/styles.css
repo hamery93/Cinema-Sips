@@ -1,3 +1,5 @@
+
+
 .callout.primary {
   padding: 30px;
   /* background-image: url("https://document-export.canva.com/DAEBg0k4fKA/27/thumbnail/0001-8394103686.png");
@@ -6,8 +8,8 @@
   
 }
 
-grid-container.fluid {
-  background-color: rgb(187, 127, 255);
+.callout.secondary {
+  background-color: transparent;
 }
 
 .basic-card {
@@ -17,11 +19,9 @@ grid-container.fluid {
   -webkit-flex-direction: column;
   -ms-flex-direction: column;
   flex-direction: column;
-  margin-bottom: 1rem;
   border: 2px solid #e6e6e6;
-  border-radius: 0;
+  border-radius: 10px;
   background: #fefefe;
-  box-shadow: none;
   overflow: hidden;
   color: #0a0a0a;
   display: -ms-grid;
@@ -30,7 +30,7 @@ grid-container.fluid {
   grid-template-columns: 1fr;
   -ms-grid-rows: 1fr 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
-  margin: 0 auto;
+  margin: 10px;
 }
 
 .basic-card > :last-child {
@@ -48,8 +48,22 @@ grid-container.fluid {
 }
 
 .basic-card-content {
+  background-color: transparent;
   border: 0;
   grid-row-start: 3 / 4;
-  margin: 0;
+  margin: 10;
+  margin-bottom: 20px;
   overflow: scroll;
+}
+
+ul{
+  list-style-type: none;
+}
+
+img{
+  padding: 20px;
+} 
+
+.drink-card, .movie-card {
+  padding: 20px;
 }
