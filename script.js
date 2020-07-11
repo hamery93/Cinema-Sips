@@ -43,7 +43,7 @@ function createDrinkAPI(array) {
 
 //takes in an array containing liquor and movie genre strings.
 //returns a complete api url for the omdb API.
-function creteMovieAPI(array) {
+function createMovieAPI(array) {
   // appends movieURL declared above with the genre designated by user's mood choice and returns the completed string.
   return movieURL + array[0];
 }
