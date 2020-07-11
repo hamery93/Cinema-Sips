@@ -85,9 +85,12 @@ function moviePair(apiUrl, array) {
     var movieCard = $("<div class='card'>");
 
     console.log(Title, Poster);
+    //!here is title var
     var movieTitle = $(`<h2>${Title}</h2>`);
     // var movieTitle = "Title: " + movieTitle;
 
+    //!here is picture var
+    //! What is going on with the two image tags?
     var moviePoster = $("<img>").attr({ src: Poster, alt: Title });
     var movieImage = $("<img src='" + moviePoster + "'>");
     movieImage.attr("style", "width: 200px; height: 200px");
@@ -95,6 +98,9 @@ function moviePair(apiUrl, array) {
     movieDiv.append(movieTitle, moviePoster);
     // movieDiv.append(movieCard);
     $("#movie").append(movieDiv);
+
+    $("#movie-info").append(drinkName, liquorType);
+    $("#movie-picture").append(movieImage);
   });
 }
 
