@@ -1,5 +1,6 @@
 //Starting URL's for the API's. Search parameters to be added based on user choice.
-var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1";
+// var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1";
+var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=a55df557";
 var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 
 //Search through movies in for loop - if genre = BLAH then print
@@ -43,7 +44,7 @@ function createDrinkAPI(array) {
 
 //takes in an array containing liquor and movie genre strings.
 //returns a complete api url for the omdb API.
-function creteMovieAPI(array) {
+function createMovieAPI(array) {
   // appends movieURL declared above with the genre designated by user's mood choice and returns the completed string.
   return movieURL + array[0];
 }
@@ -71,6 +72,8 @@ function cocktailPair(apiUrl, array) {
     $("#drink-picture").append(drinkImage);
   });
 }
+
+
 //Takes in the completed OMDB URL and the array containing the delegated liquor and movie genre choices
 //creates divs containing information and appends them to the page
 // ! will add more comments when Greg is done
@@ -90,19 +93,19 @@ function moviePair(apiUrl, array) {
     // var movieTitle = "Title: " + movieTitle;
 
     //!here is picture var
-    //! What is going on with the two image tags?
     var moviePoster = $("<img>").attr({ src: Poster, alt: Title });
     var movieImage = $("<img src='" + moviePoster + "'>");
     movieImage.attr("style", "width: 200px; height: 200px");
 
     movieDiv.append(movieTitle, moviePoster);
-    // movieDiv.append(movieCard);
+    movieDiv.append(movieCard);
     $("#movie").append(movieDiv);
 
-    $("#movie-info").append(drinkName, liquorType);
-    $("#movie-picture").append(movieImage);
+    // $("#movie-info").append(movieTitle, liquorType);
+    // $("#movie-picture").append(movieImage);
   });
 }
+
 
 function clear() {
   $("#drink-picture").empty();
@@ -118,8 +121,10 @@ $("#drop-down-list").on("click", function (event) {
   clear();
 
   //retrieves value from the list
-  //!Hopefully this works. Might not
-  var mood = $(this).attr("id");
+  //!This only Grabs "HAPPY" since it is the first child.
+  // var mood = $(this).child().child().attr("id");
+  var mood = $(this).children("li").children("ul").children("li").attr("id");
+  console.log(mood);
   // var mood = $("#drop-down").val();
 
   //chooses the liquor type and movie genre to match the mood
