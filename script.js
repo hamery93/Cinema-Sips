@@ -112,31 +112,60 @@ function clear() {
   $("#movie-info").empty();
 }
 
-//make this a function just for now to make sure it works
-//!Will need to test this when HTML is ready
-$("#drop-down-list").on("click", function (event) {
-  //clears previous choices
-  clear();
+// //make this a function just for now to make sure it works
+// //!Will need to test this when HTML is ready
+// $("#drop-down-list").on("click", function (event) {
+//   //clears previous choices
+//   clear();
 
-  //retrieves value from the list
-  //!This only Grabs "HAPPY" since it is the first child.
-  // var mood = $(this).child().child().attr("id");
-  var mood = $(this).children("li").children("ul").children("li").attr("id");
-  console.log(mood);
-  // var mood = $("#drop-down").val();
+//   //retrieves value from the list
+//   //!This only Grabs "HAPPY" since it is the first child.
+//   // var mood = $(this).child().child().attr("id");
+//   var mood = $(this).children("li").children("ul").children("li").attr("id");
+//   console.log(mood);
+//   // var mood = $("#drop-down").val();
 
-  //chooses the liquor type and movie genre to match the mood
-  var drinkAndGenre = delegateUserInput(mood);
+//   //chooses the liquor type and movie genre to match the mood
+//   var drinkAndGenre = delegateUserInput(mood);
 
-  //feeds array holding genre and liquor type
-  //calls functions to build API URL's using user specified parameters
-  var drinkAPI = createDrinkAPI(drinkAndGenre);
-  var movieAPI = createMovieAPI(drinkAndGenre);
+//   //feeds array holding genre and liquor type
+//   //calls functions to build API URL's using user specified parameters
+//   var drinkAPI = createDrinkAPI(drinkAndGenre);
+//   var movieAPI = createMovieAPI(drinkAndGenre);
 
-  //calls functions that find movie and cocktail information and populates the page
-  cocktailPair(drinkAPI, drinkAndGenre);
-  moviePair(movieAPI, drinkAndGenre);
-});
+//   //calls functions that find movie and cocktail information and populates the page
+//   cocktailPair(drinkAPI, drinkAndGenre);
+//   moviePair(movieAPI, drinkAndGenre);
+// });
+
+function buttonClick(event) {
+   //clears previous choices
+   clear();
+
+   //retrieves value from the list
+   //!This only Grabs "HAPPY" since it is the first child.
+   // var mood = $(this).child().child().attr("id");
+   var mood = $(this).attr("id");
+   console.log(mood);
+   // var mood = $("#drop-down").val();
+ 
+   //chooses the liquor type and movie genre to match the mood
+   var drinkAndGenre = delegateUserInput(mood);
+ 
+   //feeds array holding genre and liquor type
+   //calls functions to build API URL's using user specified parameters
+   var drinkAPI = createDrinkAPI(drinkAndGenre);
+   var movieAPI = createMovieAPI(drinkAndGenre);
+ 
+   //calls functions that find movie and cocktail information and populates the page
+   cocktailPair(drinkAPI, drinkAndGenre);
+   moviePair(movieAPI, drinkAndGenre);
+}
+$("#happy").on("click", buttonClick);
+$("#sad").on("click", buttonClick);
+$("#angry").on("click", buttonClick);
+$("#scared").on("click", buttonClick);
+$("#romantic").on("click", buttonClick);
 
 // !!*Try to do a random one^ so that it does not just give you the same 3
 //! Make sure to take our all vars used to test functions
