@@ -90,15 +90,13 @@ function moviePair(apiUrl, array) {
     console.log(Title, Poster);
     //!here is title var
     var movieTitle = $(`<h2>${Title}</h2>`);
-    // var movieTitle = "Title: " + movieTitle;
 
     //!here is picture var
     var moviePoster = $("<img>").attr({ src: Poster, alt: Title });
     var movieImage = $("<img src='" + moviePoster + "'>");
-    movieImage.attr("style", "width: 200px; height: 200px");
+    movieImage.attr("style", "width: 200px; height: 300px");
 
-    movieDiv.append(movieTitle, moviePoster);
-    movieDiv.append(movieCard);
+    movieDiv.append(movieTitle, moviePoster);   
     $("#movie").append(movieDiv);
 
     // $("#movie-info").append(movieTitle, liquorType);
