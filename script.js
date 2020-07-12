@@ -79,20 +79,24 @@ function cocktailPair(apiUrl, array) {
   });
 }
 
-function moviePair(apiUrl) {
-
+function moviePair(apiUrl, array) {
+var i = 0;
+if(array[0] === "10749"){
+  i+= 3;
+}
+console.log(i);
 //ajax call retrieves the information from the cocktailsDB API
   $.ajax({
     url: apiUrl,
     method: "GET",
   }).then(function (response) {
     //variables created to store information on the drink in html elements
-    var movieName = $("<h5>" + response.results[0].title + "</h5>");
+    var movieName = $("<h5>" + response.results[i].title + "</h5>");
 
-    var movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + response.results[0].poster_path + "'>");
+    var movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + response.results[i].poster_path + "'>");
     movieImage.attr("style", "width: 200px; height: 300px;");
 
-    var moviePlot = $("<p>" + response.results[0].overview + "</p>");
+    var moviePlot = $("<p>" + response.results[i].overview + "</p>");
 
     //variables appended to the page in 2 different divs
     $("#movie-info").append(movieName, moviePlot);
@@ -128,7 +132,7 @@ function buttonClick(event) {
  
    //calls functions that find movie and cocktail information and populates the page
    cocktailPair(drinkAPI, drinkAndGenre);
-   moviePair(movieAPI);
+   moviePair(movieAPI, drinkAndGenre);
 }
 
 //sets a click event for each possible mood
