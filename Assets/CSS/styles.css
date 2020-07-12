@@ -1,9 +1,22 @@
+html, body {
+  height: 100%;
+}
+
+//for modal
+.reveal {
+  background-color: crimson;
+}
+.modal {
+  text-align: center;
+  text-emphasis: strong ;
+}
+
 
 .callout.primary {
 
   background-image: url(https://media-public.canva.com/MADeqxukS3o/1/thumbnail_large.jpg);
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   margin: 0;
 
@@ -25,10 +38,10 @@
   background-color: transparent;
 }
 
-.outer-card{
+.background-img{
   background-image:url(https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80);
   background-size: cover;
-  background-position: bottom;
+  background-position: center;
   background-repeat: no-repeat;
 }
 
@@ -80,7 +93,8 @@ ul{
 }
 
 img{
-  background: white
+  background: white;
+  margin-bottom: 15px;
 } 
 
 .drink-card, .movie-card {
@@ -102,5 +116,24 @@ h2{
 }
 
 h5, li{
-  
+  color:#0f0d13;
+}
+
+
+.button{
+  background-color: #721b1f;
+  color: #faeedf;
+  border-radius: 20px;;
+}
+
+#drop-down-list{
+  border-radius: 10px;
+}
+
+.dropdown.menu>li.is-active>a {
+  color:#faeedf;
+}
+
+.dropdown.menu>li.is-dropdown-submenu-parent>a::after {
+  border-color: cornsilk transparent transparent;
 }
