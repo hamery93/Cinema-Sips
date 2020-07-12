@@ -1,91 +1,105 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
-  <head>
+<head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Cinema Sips-Give it a Shot</title>
     <!-- GoogleFonts link -->
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rye&family=Special+Elite&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat&family=Rye&family=Special+Elite&display=swap"
+        rel="stylesheet">
     <!-- foundation CDN link -->
-    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css"/>
+    <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css"
         integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA=="
         crossorigin="anonymous">
-        <!-- internal CSS stylesheet -->
+    <!-- internal CSS stylesheet -->
     <link rel="stylesheet" href="Assets/CSS/styles.css" />
-      </head>
-  <body>
+</head>
+<body>
     <!-- Sidebar Area -->
-    <div
-      class="off-canvas position-left reveal-for-large"
-      id="sidebar"
-      data-off-canvas
-      data-position="left">
-      <div class="row column">
-        <br />
-        <img class="thumbnail" src="https://placehold.it/550x350" />
-        <ul class="dropdown menu" id="drop-down-list" data-dropdown-menu>
-            <li>
-                <a href="#" class="button">Choose Yo Mood! </a>
-                <ul class="menu">
-                    <li id="happy"><a href="#">Happy</a></li>
-                    <li id="sad"><a href="#">Sad</a></li>
-                    <li id="angry"><a href="#">Angry</a></li>
-                    <li id="scared"><a href="#">Scared</a></li>
-                    <li id="romantic"><a href="#">Romantic</a></li>
-                </ul>
-            </li>
-        </ul>
-      </div>
+    <div class="off-canvas position-left reveal-for-large" id="sidebar" data-off-canvas data-position="left">
+        <div class="row column">
+            <br />
+            <img class="thumbnail" src="https://placehold.it/550x350" />
+            <ul class="dropdown menu" id="drop-down-list" data-dropdown-menu>
+                <li>
+                    <a href="#" class="button">Chose Yo Mood! </a>
+                    <ul class="menu">
+                        <li id="happy"><a href="#">Happy</a></li>
+                        <li id="sad"><a href="#">Sad</a></li>
+                        <li id="angry"><a href="#">Angry</a></li>
+                        <li id="scared"><a href="#">Scared</a></li>
+                        <li id="romantic"><a href="#">Romantic</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
     </div>
     <div class="title-bar hide-for-large">
-      <div class="title-bar-left">
-        <button class="menu-icon" type="button" data-open="my-info"></button>
-        <span class="title-bar-title">Previous Movie Suggestions</span>
-      </div>
+        <div class="title-bar-left">
+            <button class="menu-icon" type="button" data-open="my-info"></button>
+            <span class="title-bar-title">Previous Movie Suggestions</span>
+        </div>
     </div>
     <!-- Header Area -->
-    <div class="off-canvas-content" data-off-canvas-content>
-      <div class="callout primary">
-        <div class="row column">
-          <h1>Cinema Sips</h1>
-          <h2 class="lead">Give it a Shot</h2>
+    <div class="off-canvas-content background-img" data-off-canvas-content>
+        <div class="callout primary">
+            <div class="row column">
+                <h1>Cinema Sips</h1>
+                <h2 class="lead">Give it a Shot</h2>
+            </div>
         </div>
-      </div>
-      <div class="outer-card row">
-        <!-- Movie Card -->
-        <div class="flex-left column large-6 small-12">
-            <div class="basic-card movie-card id="movie"">
+        <div class="outer-card row">
+            <!-- Movie Card -->
+            <div class="flex-left column large-6 small-12">
+              <div class="basic-card movie-card id="movie"">
                 <div id="movie-picture"class="basic-card-image text-center"></div>
                 <div id="movie-info" class="basic-card-content content callout secondary"></div>
-            </div> 
+              </div> 
+            </div>
+            <br/>
+            </div>
+            <br />
+            <!-- Drink Card -->
+            <div class="flex-right column large-6 small-12">
+                <div class="basic-card drink-card" id="cocktail-information">
+                    <div id="drink-picture" class="basic-card-image text-center"></div>
+                    <div id="drink-info" class="basic-card-content content callout secondary"></div>
+                </div>
+            </div>
+  
+            <p><a data-open="reveal_modal">Cinema Sips !</a></p>
+                <div class="reveal large" id="reveal_modal" data-reveal>
+                    <h2 class="modal">Cinema Sips! Give it a Shot </h2>
+                    <p>Welcome to Cinema Sips, where your Friday night just got a whole lot easier. Chose
+                        your mood and be paired with a movie and drink !
+                    </p>
+                    <button class="close-button" data-close aria-label="Close reveal" type="button">
+                        <span aria-hidden="true">×</span>
+                    </button>
+                </div>
+  
+            </div>
         </div>
+        <!-- jQuery link -->
+        <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
+        <!-- foundation JS links -->
+        <script>
+            src = "https://cdnjs.cloudflare.com/ajax/libs/foundation/6.6.3/js/plugins/foundation.reveal.min.js"
+        </script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/js/foundation.min.js"
+            integrity="sha256-WUKHnLrIrx8dew//IpSEmPN/NT3DGAEmIePQYIEJLLs= sha384-53StQWuVbn6figscdDC3xV00aYCPEz3srBdV/QGSXw3f19og3Tq2wTRe0vJqRTEO sha512-X9O+2f1ty1rzBJOC8AXBnuNUdyJg0m8xMKmbt9I3Vu/UOWmSg5zG+dtnje4wAZrKtkopz/PEDClHZ1LXx5IeOw=="
+            crossorigin="anonymous"></script>
+        <!-- <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script> -->
+        <script>
 
-        <br />
-        
-        <!-- Drink Card -->
-          <div class ="flex-right column large-6 small-12">
-            <div class ="basic-card drink-card" id="cocktail-information">
-                <div id="drink-picture" class="basic-card-image text-center"></div>
-                <div id="drink-info" class="basic-card-content content callout secondary"></div>
-            </div>    
-        </div>
-      </div>
-    </div>
-    <!-- jQuery link -->
-       <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> -->
-    <!-- foundation JS links -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.0.1/js/vendor/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/js/foundation.min.js"
-        integrity="sha256-WUKHnLrIrx8dew//IpSEmPN/NT3DGAEmIePQYIEJLLs= sha384-53StQWuVbn6figscdDC3xV00aYCPEz3srBdV/QGSXw3f19og3Tq2wTRe0vJqRTEO sha512-X9O+2f1ty1rzBJOC8AXBnuNUdyJg0m8xMKmbt9I3Vu/UOWmSg5zG+dtnje4wAZrKtkopz/PEDClHZ1LXx5IeOw=="
-        crossorigin="anonymous"></script>
-    <!-- <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script> -->
-    <script>
-        $(document).ready(function () {
             $(document).foundation();
-        })
-    </script>
-    <!-- internal JS link -->
-    <script src="script.js"></script>
-    </body>
+            $(document).ready(function () {
+                $('#reveal_modal').foundation('open')
+            });
+        </script>
+        <!-- internal JS link -->
+        <script src="script.js"></script>
+</body>
 </html>
