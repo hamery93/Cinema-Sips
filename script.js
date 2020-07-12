@@ -1,5 +1,7 @@
 //Starting URL's for the API's. Search parameters to be added based on user choice.
-var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1";
+// var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=880239c1";
+// var movieURL = "http://www.omdbapi.com/?i=tt3896198&apikey=a55df557";
+var movieURL = "https://api.themoviedb.org/3/discover/movie?api_key=5e90ef02ac18551f90f8c1c7cf3f5e91&language=en-US&with_genres="
 var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 
 //Search through movies in for loop - if genre = BLAH then print
@@ -12,22 +14,27 @@ function delegateUserInput(mood) {
 
   //these if else statements push the liquor/genre corresponding to the given mood
   if (mood === "happy") {
-    pairings.push("comedy");
+    // pairings.push("comedy");
+    pairings.push("35");
     pairings.push("tequila");
     liquor = "tequila";
   } else if (mood === "sad") {
-    pairings.push("drama");
+    // pairings.push("drama");
+    pairings.push("18");
     pairings.push("wine");
   }
-  // else if (mood === "scared") {
-  //   pairings.push("horror");
-  //   pairings.push("rum");
-  // }
+  else if (mood === "scared") {
+    // pairings.push("horror");
+    pairings.push("27");
+    pairings.push("rum");
+  }
   else if (mood === "romantic") {
-    pairings.push("romantic comedy");
+    // pairings.push("romantic comedy");
+    pairings.push("10749");
     pairings.push("champagne");
   } else {
-    pairings.push("action");
+    // pairings.push("action");
+    pairings.push("28");
     pairings.push("whisky");
   }
   //returns the array when this function is called
@@ -43,7 +50,7 @@ function createDrinkAPI(array) {
 
 //takes in an array containing liquor and movie genre strings.
 //returns a complete api url for the omdb API.
-function creteMovieAPI(array) {
+function createMovieAPI(array) {
   // appends movieURL declared above with the genre designated by user's mood choice and returns the completed string.
   return movieURL + array[0];
 }
@@ -71,61 +78,69 @@ function cocktailPair(apiUrl, array) {
     $("#drink-picture").append(drinkImage);
   });
 }
-//Takes in the completed OMDB URL and the array containing the delegated liquor and movie genre choices
-//creates divs containing information and appends them to the page
-// ! will add more comments when Greg is done
-function moviePair(apiUrl, array) {
-  var movie = array[0];
 
+function moviePair(apiUrl, array) {
+var i = 0;
+if(array[0] === "10749"){
+  i+= 3;
+}
+console.log(i);
+//ajax call retrieves the information from the cocktailsDB API
   $.ajax({
     url: apiUrl,
     method: "GET",
-  }).then(function ({ Title, Poster }) {
-    var movieDiv = $("<div id='movie-wrapper'>");
-    var movieCard = $("<div class='card'>");
+  }).then(function (response) {
+    //variables created to store information on the drink in html elements
+    var movieName = $("<h5>" + response.results[i].title + "</h5>");
 
-    console.log(Title, Poster);
-    var movieTitle = $(`<h2>${Title}</h2>`);
+    var movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + response.results[i].poster_path + "'>");
+    movieImage.attr("style", "width: 200px; height: 300px;");
 
-    var moviePoster = $("<img>").attr({ src: Poster, alt: Title });
-    var movieImage = $("<img src='" + moviePoster + "'>");
-    movieImage.attr("style", "width: 200px; height: 300px");
+    var moviePlot = $("<p>" + response.results[i].overview + "</p>");
 
-    movieDiv.append(movieTitle, moviePoster);   
-    $("#movie").append(movieDiv);
+    //variables appended to the page in 2 different divs
+    $("#movie-info").append(movieName, moviePlot);
+    $("#movie-picture").append(movieImage);
   });
 }
 
 function clear() {
   $("#drink-picture").empty();
   $("#drink-info").empty();
-  $("#movie-poster").empty();
+  $("#movie-picture").empty();
   $("#movie-info").empty();
 }
 
-//make this a function just for now to make sure it works
-//!Will need to test this when HTML is ready
-$("#drop-down-list").on("click", function (event) {
-  //clears previous choices
-  clear();
+function buttonClick(event) {
+   //clears previous choices
+   clear();
 
-  //retrieves value from the list
-  //!Hopefully this works. Might not
-  var mood = $(this).attr("id");
-  // var mood = $("#drop-down").val();
+   //retrieves value from the list
+   //!This only Grabs "HAPPY" since it is the first child.
+   // var mood = $(this).child().child().attr("id");
+   var mood = $(this).attr("id");
+   console.log(mood);
+   // var mood = $("#drop-down").val();
+ 
+   //chooses the liquor type and movie genre to match the mood
+   var drinkAndGenre = delegateUserInput(mood);
+ 
+   //feeds array holding genre and liquor type
+   //calls functions to build API URL's using user specified parameters
+   var drinkAPI = createDrinkAPI(drinkAndGenre);
+   var movieAPI = createMovieAPI(drinkAndGenre);
+ 
+   //calls functions that find movie and cocktail information and populates the page
+   cocktailPair(drinkAPI, drinkAndGenre);
+   moviePair(movieAPI, drinkAndGenre);
+}
 
-  //chooses the liquor type and movie genre to match the mood
-  var drinkAndGenre = delegateUserInput(mood);
-
-  //feeds array holding genre and liquor type
-  //calls functions to build API URL's using user specified parameters
-  var drinkAPI = createDrinkAPI(drinkAndGenre);
-  var movieAPI = createMovieAPI(drinkAndGenre);
-
-  //calls functions that find movie and cocktail information and populates the page
-  cocktailPair(drinkAPI, drinkAndGenre);
-  moviePair(movieAPI, drinkAndGenre);
-});
+//sets a click event for each possible mood
+$("#happy").on("click", buttonClick);
+$("#sad").on("click", buttonClick);
+$("#angry").on("click", buttonClick);
+$("#scared").on("click", buttonClick);
+$("#romantic").on("click", buttonClick);
 
 // !!*Try to do a random one^ so that it does not just give you the same 3
 //! Make sure to take our all vars used to test functions
