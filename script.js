@@ -89,7 +89,7 @@ function moviePair(apiUrl) {
     //variables created to store information on the drink in html elements
     var movieName = $("<h5>" + response.results[0].title + "</h5>");
 
-    var movieImage = $("<img src='" + response.results[0].poster_path + "'>");
+    var movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + response.results[0].poster_path + "'>");
     movieImage.attr("style", "width: 200px; height: 300px;");
 
     var moviePlot = $("<p>" + response.results[0].overview + "</p>");
@@ -100,43 +100,10 @@ function moviePair(apiUrl) {
   });
 }
 
-
-
-// //Takes in the completed OMDB URL and the array containing the delegated liquor and movie genre choices
-// //creates divs containing information and appends them to the page
-// // ! will add more comments when Greg is done
-// function moviePair(apiUrl, array) {
-//   var movie = array[0];
-
-//   $.ajax({
-//     url: apiUrl,
-//     method: "GET",
-//   }).then(function ({ Title, Poster }) {
-//     var movieDiv = $("<div id='movie-wrapper'>");
-//     var movieCard = $("<div class='card'>");
-
-//     console.log(Title, Poster);
-//     //!here is title var
-//     var movieTitle = $(`<h2>${Title}</h2>`);
-
-//     //!here is picture var
-//     var moviePoster = $("<img>").attr({ src: Poster, alt: Title });
-//     var movieImage = $("<img src='" + moviePoster + "'>");
-//     movieImage.attr("style", "width: 200px; height: 300px");
-
-//     movieDiv.append(movieTitle, moviePoster);   
-//     $("#movie").append(movieDiv);
-
-//     // $("#movie-info").append(movieTitle, liquorType);
-//     // $("#movie-picture").append(movieImage);
-//   });
-// }
-
-
 function clear() {
   $("#drink-picture").empty();
   $("#drink-info").empty();
-  $("#movie-poster").empty();
+  $("#movie-picture").empty();
   $("#movie-info").empty();
 }
 
