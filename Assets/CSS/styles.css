@@ -4,12 +4,13 @@ body {
 }
 
 .callout.primary {
-  background-image: url(Assets/images/CinemaSipsHeader.jpg);
+  background-image: url(../images/CinemaSipsHeader.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
   margin: 0;
 }
+
 
 #sidebar {
   background: rgb(15, 13, 19);
@@ -25,7 +26,9 @@ body {
 .thumbnail {
   background-color: transparent;
   border: none;
-  box-sizing: none;
+  height: 160px;
+  margin-left:20px ;
+  box-shadow: none;
 }
 
 .callout.secondary {
@@ -119,6 +122,7 @@ li {
   background-color: #721b1f;
   color: #faeedf;
   border-radius: 20px;
+  margin-left: 20px;
 }
 
 #drop-down-list {
