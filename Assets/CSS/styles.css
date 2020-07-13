@@ -102,8 +102,8 @@ img {
 /* ! THIS ONE I ADDED WHEN I CHANGED JS TO PRINT 3 */
 #drink-paragraph,
 #movie-paragraph {
-  background: rgb(241, 227, 199);
-  opacity: .65;
+  background:beige;
+  opacity: .75;
 }
 
 
@@ -164,6 +164,5 @@ p {
 
 a{
   color: #721b1f;
-  font-family:"Montserrat", cursive; 
   font-weight: bold;
 }
