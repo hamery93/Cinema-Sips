@@ -33,7 +33,7 @@ function delegateUserInput(mood) {
   } else {
     // pairings.push("action");
     pairings.push("28");
-    pairings.push("whisky");
+    pairings.push("whiskey");
   }
   //returns the array when this function is called
   return pairings;
@@ -138,6 +138,11 @@ function buttonClick(event) {
    for(var i = 0; i < 3; i++){
      cocktailPair(drinkAPI, drinkAndGenre, i);
      moviePair(movieAPI, i);
+   }
+   console.log(drinkAndGenre[1]);
+   if(drinkAndGenre[1] === "whiskey"){
+     var j=0;
+     cocktailPair(drinkAPI, ["fill", "whisky"], j);
    }
 }
 
