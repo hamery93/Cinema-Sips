@@ -33,7 +33,7 @@ function delegateUserInput(mood) {
   } else {
     // pairings.push("action");
     pairings.push("28");
-    pairings.push("whisky");
+    pairings.push("whiskey");
   }
   //returns the array when this function is called
   return pairings;
@@ -63,6 +63,7 @@ function cocktailPair(apiUrl, array, i) {
     url: apiUrl,
     method: "GET",
   }).then(function (response) {
+    console.log(response);
     //variables created to store information on the drink in html elements
     var pictureDiv = $("<div class='basic-card-image text-center'>");
     var infoDiv = $("<div class ='basic-card-content content callout secondary' id='drink-paragraph'>");
@@ -77,11 +78,8 @@ function cocktailPair(apiUrl, array, i) {
     pictureDiv.append(drinkImage);
     infoDiv.append(drinkName, liquorType);
 
+    //divs appended to the page
     $("#cocktail-card").append(pictureDiv, infoDiv);
-
-    //variables appended to the page in 2 different divs
-    // $("#drink-info").append(drinkName, liquorType);
-    // $("#drink-picture").append(drinkImage);
   });
 }
 
@@ -92,6 +90,7 @@ function moviePair(apiUrl, i) {
     url: apiUrl,
     method: "GET",
   }).then(function (response) {
+    console.log(response);
     //variables created to store information on the drink in html elements
     var pictureDiv = $("<div class='basic-card-image text-center'>");
     var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
@@ -106,19 +105,16 @@ function moviePair(apiUrl, i) {
     pictureDiv.append(movieImage);
     infoDiv.append(movieName, moviePlot);
 
+   //divs appended to the page 
     $("#movie-card").append(pictureDiv, infoDiv);
 
-    // //variables appended to the page in 2 different divs
-    // $("#movie-info").append(movieName, moviePlot);
-    // $("#movie-picture").append(movieImage);
+
   });
 }
 
 function clear() {
   $("#cocktail-card").empty();
   $("#movie-card").empty();
-  // $("#movie-picture").empty();
-  // $("#movie-info").empty();
 }
 
 function buttonClick(event) {
@@ -143,6 +139,11 @@ function buttonClick(event) {
      cocktailPair(drinkAPI, drinkAndGenre, i);
      moviePair(movieAPI, i);
    }
+   //corrects for the 2 spellings of whiskey in the API so that all 3 are printed
+   if(drinkAndGenre[1] === "whiskey"){
+     var j=0;
+     cocktailPair(drinkAPI, ["fill", "whisky"], j);
+   }
 }
 
 //sets a click event for each possible mood
@@ -153,4 +154,3 @@ $("#scared").on("click", buttonClick);
 $("#romantic").on("click", buttonClick);
 
 // !!*Try to do a random one^ so that it does not just give you the same 3
-//* more than 1
