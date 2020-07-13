@@ -139,7 +139,7 @@ function buttonClick(event) {
      cocktailPair(drinkAPI, drinkAndGenre, i);
      moviePair(movieAPI, i);
    }
-   console.log(drinkAndGenre[1]);
+   //corrects for the 2 spellings of whiskey in the API so that all 3 are printed
    if(drinkAndGenre[1] === "whiskey"){
      var j=0;
      cocktailPair(drinkAPI, ["fill", "whisky"], j);
