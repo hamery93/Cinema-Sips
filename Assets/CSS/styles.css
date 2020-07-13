@@ -103,7 +103,7 @@ img {
 #drink-paragraph,
 #movie-paragraph {
   background: rgb(241, 227, 199);
-  opacity: 50%;
+  opacity: .65;
 }
 
 
@@ -157,3 +157,13 @@ p {
   text-align: center;
 }
 
+.dropdown.menu .submenu {
+  border-radius: 15px;
+  text-align: center;
+}
+
+a{
+  color: #721b1f;
+  font-family:"Montserrat", cursive; 
+  font-weight: bold;
+}
