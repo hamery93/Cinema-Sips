@@ -9,6 +9,7 @@
         rel="stylesheet">
     <!-- foundation CDN link -->
     <link rel="stylesheet" href="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.min.css" />
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/motion-ui/1.1.1/motion-ui.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.5.1/dist/css/foundation.min.css"
         integrity="sha256-1mcRjtAxlSjp6XJBgrBeeCORfBp/ppyX4tsvpQVCcpA= sha384-b5S5X654rX3Wo6z5/hnQ4GBmKuIJKMPwrJXn52ypjztlnDK2w9+9hSMBz/asy9Gw sha512-M1VveR2JGzpgWHb0elGqPTltHK3xbvu3Brgjfg4cg5ZNtyyApxw/45yHYsZ/rCVbfoO5MSZxB241wWq642jLtA=="
         crossorigin="anonymous">
@@ -44,7 +45,7 @@
     <!-- Header Area -->
     <div class="off-canvas-content background-img" data-off-canvas-content>
         <div class="callout primary">
-            <div class="row column">
+            <div class="row">
                 <h1>Cinema Sips</h1>
                 <h2 class="lead">Give it a Shot</h2>
             </div>
@@ -52,22 +53,14 @@
         <div class="outer-card row">
             <!-- Movie Card -->
             <div class="flex-left column large-6 small-12" id="movie-card">
-                <!-- <div class="basic-card movie-card" id="movie-card"> -->
-                    <!-- <div id="movie-picture"class="basic-card-image text-center"></div>
-                    <div id="movie-info" class="basic-card-content content callout secondary"></div> -->
-                <!-- </div>  -->
             </div>
             <br/>
             <br />
             <!-- Drink Card -->
             <div class="flex-right column large-6 small-12" id="cocktail-card">
-                <!-- <div class="basic-card drink-card" id="cocktail-card"> -->
-                    <!-- <div id="drink-picture" class="basic-card-image text-center"></div>
-                    <div id="drink-info" class="basic-card-content content callout secondary"></div> -->
-                <!-- </div> -->
             </div>
             <p><a data-open="reveal_modal"></a></p>
-                <div class="reveal large" id="reveal_modal" data-reveal>
+                <div class="reveal large" id="reveal_modal" data-reveal data-animation-out=""="scale-out-up fast" data-animation-in="scale-in-down fast">
                     <h5 class="modal">Welcome to Cinema Sips! Give it a Shot.</h5>
                     <hr/>
                     <p>Movie night just got a whole lot easier. Choose your mood from the dropdown menu and be paired with a movie suggestions to match your mood and a drink to go with!
