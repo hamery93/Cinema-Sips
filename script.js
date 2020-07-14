@@ -1,5 +1,6 @@
 //Starting URL's for the API's. Search parameters to be added based on user choice.
-var movieURL = "https://api.themoviedb.org/3/discover/movie?api_key=5e90ef02ac18551f90f8c1c7cf3f5e91&language=en-US&with_genres="
+var movieURL =
+  "https://api.themoviedb.org/3/discover/movie?api_key=5e90ef02ac18551f90f8c1c7cf3f5e91&language=en-US&with_genres=";
 var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 
 //Search through movies in for loop - if genre = BLAH then print
@@ -20,13 +21,11 @@ function delegateUserInput(mood) {
     // pairings.push("drama");
     pairings.push("18");
     pairings.push("wine");
-  }
-  else if (mood === "scared") {
+  } else if (mood === "scared") {
     // pairings.push("horror");
     pairings.push("27");
     pairings.push("rum");
-  }
-  else if (mood === "romantic") {
+  } else if (mood === "romantic") {
     // pairings.push("romantic comedy");
     pairings.push("10749");
     pairings.push("champagne");
@@ -56,9 +55,8 @@ function createMovieAPI(array) {
 //Takes in the completed cocktailDB URL and the array containing the delegated liquor and movie genre choices
 //creates divs containing information and appends them to the page
 function cocktailPair(apiUrl, array, i) {
-  
   var liquor = array[1];
-//ajax call retrieves the information from the cocktailsDB API
+  //ajax call retrieves the information from the cocktailsDB API
   $.ajax({
     url: apiUrl,
     method: "GET",
@@ -67,7 +65,9 @@ function cocktailPair(apiUrl, array, i) {
 
     //variables created to store information on the drink in html elements
     var pictureDiv = $("<div class='basic-card-image text-center'>");
-    var infoDiv = $("<div class ='basic-card-content content callout secondary' id='drink-paragraph'>");
+    var infoDiv = $(
+      "<div class ='basic-card-content content callout secondary' id='drink-paragraph'>"
+    );
 
     var drinkName = $("<h5>" + response.drinks[i].strDrink + "</h5>");
 
@@ -85,8 +85,7 @@ function cocktailPair(apiUrl, array, i) {
 }
 
 function moviePair(apiUrl, i) {
-
-//ajax call retrieves the information from the cocktailsDB API
+  //ajax call retrieves the information from the cocktailsDB API
   $.ajax({
     url: apiUrl,
     method: "GET",
@@ -128,6 +127,7 @@ function moviePair(apiUrl, i) {
 
    }
 
+    $("#movie-card").append(pictureDiv, infoDiv);
   });
 }
 
@@ -172,5 +172,3 @@ $("#sad").on("click", buttonClick);
 $("#angry").on("click", buttonClick);
 $("#scared").on("click", buttonClick);
 $("#romantic").on("click", buttonClick);
-
-// !!*Try to do a random one^ so that it does not just give you the same 3

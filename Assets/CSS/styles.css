@@ -93,19 +93,16 @@ img {
   margin-bottom: 15px;
 }
 
-
 .movie-card,
-.movie-card {
+.drink-card {
   padding: 20px;
+  justify-content: center;
 }
-
-/* ! THIS ONE I ADDED WHEN I CHANGED JS TO PRINT 3 */
 #drink-paragraph,
 #movie-paragraph {
-  background: rgb(241, 227, 199);
-  opacity: 50%;
+  background: beige;
+  opacity: 0.75;
 }
-
 
 h1 {
   font-family: "Rye", cursive;
@@ -147,7 +144,6 @@ p {
   border-color: cornsilk transparent transparent;
 }
 
-
 #reveal_modal {
   background-color: #faeedf;
   opacity: 0.95;
@@ -157,3 +153,12 @@ p {
   text-align: center;
 }
 
+.dropdown.menu .submenu {
+  border-radius: 15px;
+  text-align: center;
+}
+
+a {
+  color: #721b1f;
+  font-weight: bold;
+}
