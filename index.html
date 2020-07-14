@@ -36,11 +36,25 @@
             </ul>
         </div>
     </div>
-    <div class="title-bar hide-for-large">
+    <div class="title-bar" data-responsive-toggle="navbar">
         <div class="title-bar-left">
-            <button class="menu-icon" type="button" data-open="my-info"></button>
-            <span class="title-bar-title">Set the Mood</span>
+            <button class="menu-icon" type="button" data-toggle="navbar"></button>
+            <span class="title-bar-title">Choose Yo Mood!</span>
         </div>
+    </div>
+    <div id="navbar">
+        <ul class="dropdown menu show-for-small hide-for-large" id="drop-down-list" data-dropdown-menu>
+            <li>
+                <a href="#" class="button">Set the mood:</a>
+                <ul class="menu">
+                    <li id="happy"><a href="#">Happy &#128522;</a></li>
+                    <li id="sad"><a href="#">Sad &#128549;</a></li>
+                    <li id="angry"><a href="#">Angry &#128545;</a></li>
+                    <li id="scared"><a href="#">Scared &#128561;</a></li>
+                    <li id="romantic"><a href="#">Romantic &#128536;</a></li>
+                </ul>
+            </li>
+        </ul>
     </div>
     <!-- Header Area -->
     <div class="off-canvas-content background-img" data-off-canvas-content>
