@@ -10,6 +10,7 @@ var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 function delegateUserInput(mood) {
   //this array variable will store 2 values: the liquor and movie genre that matches the mood selected by the user
   var pairings = [];
+  console.log(pairings);
 
   //these if else statements push the liquor/genre corresponding to the given mood
   if (mood === "happy") {
@@ -35,6 +36,7 @@ function delegateUserInput(mood) {
     pairings.push("whiskey");
   }
   //returns the array when this function is called
+  console.log(pairings);
   return pairings;
 }
 
@@ -92,18 +94,15 @@ function moviePair(apiUrl, i) {
 
   }).then(function ({results}) {
     var movies = [];
-    console.log(apiUrl)
-    console.log(results.map(result => result.title))
         
 
    $("#movie-card").empty();
     for (var i = 0; i < 3; i++){
      var index = Math.floor(Math.random() * results.length);
-     console.log(index)
      movies.push(results[index]);
      results.splice(index, 1);
    }
-   console.log(movies)
+
    for (var i = 0; i < movies.length; i++){
     var movieName 
     var movieImage
@@ -167,5 +166,10 @@ function buttonClick(event) {
 }
 
 //sets a click event for each possible mood
+$("#happy").on("click", buttonClick);
+$("#sad").on("click", buttonClick);
+$("#angry").on("click", buttonClick);
+$("#scared").on("click", buttonClick);
+$("#romantic").on("click", buttonClick);
 
-$("#happy, #happy a, #sad, #sad a, #angry, #angry a, #scared, #scared a, #romantic, #romantic a").on("click", buttonClick)
+// $("#happy, #happy a, #sad, #sad a, #angry, #angry a, #scared, #scared a, #romantic, #romantic a").on("click", buttonClick)
