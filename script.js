@@ -10,6 +10,7 @@ var cocktailURL = "https://www.thecocktaildb.com/api/json/v1/1/filter.php?i=";
 function delegateUserInput(mood) {
   //this array variable will store 2 values: the liquor and movie genre that matches the mood selected by the user
   var pairings = [];
+  console.log(pairings);
 
   //these if else statements push the liquor/genre corresponding to the given mood
   if (mood === "happy") {
@@ -17,24 +18,25 @@ function delegateUserInput(mood) {
     pairings.push("35");
     pairings.push("tequila");
     liquor = "tequila";
-  } if (mood === "sad") {
+  } else if (mood === "sad") {
     // pairings.push("drama");
     pairings.push("18");
     pairings.push("wine");
-  } if (mood === "scared") {
+  } else if (mood === "scared") {
     // pairings.push("horror");
     pairings.push("27");
     pairings.push("rum");
-  } if (mood === "romantic") {
+  } else if (mood === "romantic") {
     // pairings.push("romantic comedy");
     pairings.push("10749");
     pairings.push("champagne");
-  } if (mood === "angry") {
+  } else {
     // pairings.push("action");
     pairings.push("28");
     pairings.push("whiskey");
   }
   //returns the array when this function is called
+  console.log(pairings);
   return pairings;
 }
 
@@ -92,18 +94,15 @@ function moviePair(apiUrl, i) {
 
   }).then(function ({results}) {
     var movies = [];
-    console.log(apiUrl)
-    console.log(results.map(result => result.title))
         
 
    $("#movie-card").empty();
     for (var i = 0; i < 3; i++){
      var index = Math.floor(Math.random() * results.length);
-     console.log(index)
      movies.push(results[index]);
      results.splice(index, 1);
    }
-   console.log(movies)
+
    for (var i = 0; i < movies.length; i++){
     var movieName 
     var movieImage
@@ -167,5 +166,8 @@ function buttonClick(event) {
 }
 
 //sets a click event for each possible mood
-
-$("#happy, #happy a, #sad, #sad a, #angry, #angry a, #scared, #scared a, #romantic, #romantic a").on("click", buttonClick)
+$("#happy").on("click", buttonClick);
+$("#sad").on("click", buttonClick);
+$("#angry").on("click", buttonClick);
+$("#scared").on("click", buttonClick);
+$("#romantic").on("click", buttonClick);
