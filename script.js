@@ -62,9 +62,7 @@ function cocktailPair(apiUrl, array, i) {
   $.ajax({
     url: apiUrl,
     method: "GET",
-  }).then(function (response) {
-   
-   
+  }).then(function (response) {          
     //variables created to store information on the drink in html elements
     var pictureDiv = $("<div class='basic-card-image text-center'>");
     var infoDiv = $("<div class ='basic-card-content content callout secondary' id='drink-paragraph'>");
@@ -80,10 +78,6 @@ function cocktailPair(apiUrl, array, i) {
     infoDiv.append(drinkName, liquorType);
 
     $("#cocktail-card").append(pictureDiv, infoDiv);
-
-    //variables appended to the page in 2 different divs
-    // $("#drink-info").append(drinkName, liquorType);
-    // $("#drink-picture").append(drinkImage);
   });
 }
 
@@ -97,12 +91,7 @@ function moviePair(apiUrl, i) {
     var movies = [];
     console.log(apiUrl)
     console.log(results.map(result => result.title))
-    var movieName 
-    var movieImage
-    var moviePlot
-    var pictureDiv = $("<div class='basic-card-image text-center'>");
-    var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
-    
+        
 
    $("#movie-card").empty();
     for (var i = 0; i < 3; i++){
@@ -113,10 +102,12 @@ function moviePair(apiUrl, i) {
    }
    console.log(movies)
    for (var i = 0; i < movies.length; i++){
+    var movieName 
+    var movieImage
+    var moviePlot
+    var pictureDiv = $("<div class='basic-card-image text-center'>");
+    var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
      
-
-    // var i = math.floor(math.random() * response.results.length - 1);
-    
      movieName = $("<h5>" + movies[i].title + "</h5>");
     
      movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + movies[i].poster_path + "'>");
@@ -128,23 +119,12 @@ function moviePair(apiUrl, i) {
 
     $("#movie-card").append(pictureDiv, infoDiv);
    }
-
-    //variables created to store information on the drink in html elements
-    
-
-    
-
-    // //variables appended to the page in 2 different divs
-    // $("#movie-info").append(movieName, moviePlot);
-    // $("#movie-picture").append(movieImage);
   });
 }
 
 function clear() {
   $("#cocktail-card").empty();
   $("#movie-card").empty();
-  // $("#movie-picture").empty();
-  // $("#movie-info").empty();
 }
 
 function buttonClick(event) {
