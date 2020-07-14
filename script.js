@@ -85,56 +85,80 @@ function cocktailPair(apiUrl, array, i) {
 
 function moviePair(apiUrl, i) {
 
-//ajax call retrieves the information from the cocktailsDB API
-  $.ajax({
-    url: apiUrl,
-    method: "GET",
-
-  }).then(function ({results}) {
-    var movies = [];
-    console.log(apiUrl)
-    console.log(results.map(result => result.title))
-    var movieName 
-    var movieImage
-    var moviePlot
-
-    var pictureDiv = $("<div class='basic-card-image text-center'>");
-    var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
+  //ajax call retrieves the information from the cocktailsDB API
+    $.ajax({
+      url: apiUrl,
+      method: "GET",
+  
+    }).then(function (response) {
+      console.log(response);
+      var usedIndex = [];
+      //find length of results.length
+      //var index = math.floor(Math.random * results.length)
+     
+      var pictureDiv = $("<div class='basic-card-image text-center'>");
+      var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
+  
+       var movieName = $("<h5>" + response.results[i].title+ "</h5>");
+      
+       var movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + response.results[i].poster_path + "'>");
+       movieImage.attr("style", "width: 200px; height: 300px;");
+  
+       var moviePlot = $("<p>" + response.results[i].overview + "</p>");
+       pictureDiv.append(movieImage);
+       infoDiv.append(movieName, moviePlot);
+  
+      $("#movie-card").append(pictureDiv, infoDiv);
+     })
+  
+      //variables created to store information on the drink in html elements
     
+  }
 
-   $("#movie-card").empty();
-    for (var i = 0; i < 3; i++){
-     var index = Math.floor(Math.random() * results.length);
-     console.log(index)
-     movies.push(results[index]);
-     results.splice(index, 1);
-   }
-   console.log(movies)
-   for (var i = 0; i < movies.length; i++){
+// function moviePair(apiUrl, i) {
+
+// //ajax call retrieves the information from the cocktailsDB API
+//   $.ajax({
+//     url: apiUrl,
+//     method: "GET",
+
+//   }).then(function ({response}) {
+//     var movies = [];
+//     console.log(response)
+   
+//     var pictureDiv = $("<div class='basic-card-image text-center'>");
+//     var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
+
+//   //  $("#movie-card").empty();
+//     for (var i = 0; i < 3; i++){
+//      var index = Math.floor(Math.random() * results.length);
+//      console.log(index)
+//      movies.push(response[index]);
+//      response.splice(index, 1);
+//    }
+//    console.log(movies)
+//    for (var i = 0; i < movies.length; i++){
      
 
-    // var i = math.floor(math.random() * response.results.length - 1);
+//     // var i = math.floor(math.random() * response.results.length - 1);
     
-     movieName = $("<h5>" + movies[i].title + "</h5>");
+//      var movieName = $("<h5>" + movies[i].title+ "</h5>");
     
-     movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + movies[i].poster_path + "'>");
-     movieImage.attr("style", "width: 200px; height: 300px;");
+//      var movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + movies[i].poster_path + "'>");
+//      movieImage.attr("style", "width: 200px; height: 300px;");
 
-     moviePlot = $("<p>" + movies[i].overview + "</p>");
-     pictureDiv.append(movieImage);
-     infoDiv.append(movieName, moviePlot);
+//      var moviePlot = $("<p>" + movies[i].overview + "</p>");
+//      pictureDiv.append(movieImage);
+//      infoDiv.append(movieName, moviePlot);
 
-    $("#movie-card").append(pictureDiv, infoDiv);
-   }
+//     $("#movie-card").append(pictureDiv, infoDiv);
+//    }
 
-    //variables created to store information on the drink in html elements
-    
+//     //variables created to store information on the drink in html elements
+  
 
-
-
-
-  });
-}
+//   });
+// }
 
 function clear() {
   $("#cocktail-card").empty();
@@ -146,7 +170,6 @@ function buttonClick(event) {
    clear();
 
    //retrieves value from the list
-
    var mood = $(this).attr("id");
  
    //chooses the liquor type and movie genre to match the mood
@@ -161,10 +184,8 @@ function buttonClick(event) {
    //loops through 3 times to do 3 movies and 3 drinks
    for(var i = 0; i < 3; i++){
      cocktailPair(drinkAPI, drinkAndGenre, i);
-     
+     moviePair(movieAPI, i);     
    }
-
-   moviePair(movieAPI, i);
 
    //corrects for the 2 spellings of whiskey in the API so that all 3 are printed
    if(drinkAndGenre[1] === "whiskey"){
