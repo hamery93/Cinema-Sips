@@ -18,19 +18,19 @@ function delegateUserInput(mood) {
     pairings.push("35");
     pairings.push("tequila");
     liquor = "tequila";
-  } if (mood === "sad") {
+  } else if (mood === "sad") {
     // pairings.push("drama");
     pairings.push("18");
     pairings.push("wine");
-  } if (mood === "scared") {
+  } else if (mood === "scared") {
     // pairings.push("horror");
     pairings.push("27");
     pairings.push("rum");
-  } if (mood === "romantic") {
+  } else if (mood === "romantic") {
     // pairings.push("romantic comedy");
     pairings.push("10749");
     pairings.push("champagne");
-  } if (mood === "angry") {
+  } else {
     // pairings.push("action");
     pairings.push("28");
     pairings.push("whiskey");
@@ -171,5 +171,3 @@ $("#sad").on("click", buttonClick);
 $("#angry").on("click", buttonClick);
 $("#scared").on("click", buttonClick);
 $("#romantic").on("click", buttonClick);
-
-// $("#happy, #happy a, #sad, #sad a, #angry, #angry a, #scared, #scared a, #romantic, #romantic a").on("click", buttonClick)
