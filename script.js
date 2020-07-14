@@ -60,7 +60,9 @@ function cocktailPair(apiUrl, array, i) {
   $.ajax({
     url: apiUrl,
     method: "GET",
-  }).then(function (response) {
+
+  }).then(function (response) {          
+
     //variables created to store information on the drink in html elements
     var pictureDiv = $("<div class='basic-card-image text-center'>");
     var infoDiv = $(
@@ -87,24 +89,43 @@ function moviePair(apiUrl, i) {
   $.ajax({
     url: apiUrl,
     method: "GET",
-  }).then(function (response) {
+
+  }).then(function ({results}) {
+    var movies = [];
+    console.log(apiUrl)
+    console.log(results.map(result => result.title))
+        
+
+   $("#movie-card").empty();
+    for (var i = 0; i < 3; i++){
+     var index = Math.floor(Math.random() * results.length);
+     console.log(index)
+     movies.push(results[index]);
+     results.splice(index, 1);
+   }
+   console.log(movies)
+   for (var i = 0; i < movies.length; i++){
+    var movieName 
+    var movieImage
+    var moviePlot
+
+
     var pictureDiv = $("<div class='basic-card-image text-center'>");
-    var infoDiv = $(
-      "<div class ='basic-card-content content callout secondary' id='movie-paragraph'>"
-    );
+    var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
+     
+     movieName = $("<h5>" + movies[i].title + "</h5>");
+    
+     movieImage = $("<img src='http://image.tmdb.org/t/p/w185//" + movies[i].poster_path + "'>");
+     movieImage.attr("style", "width: 200px; height: 300px;");
 
-    var movieName = $("<h5>" + response.results[i].title + "</h5>");
+     moviePlot = $("<p>" + movies[i].overview + "</p>");
+     pictureDiv.append(movieImage);
+     infoDiv.append(movieName, moviePlot);
 
-    var movieImage = $(
-      "<img src='http://image.tmdb.org/t/p/w185//" +
-        response.results[i].poster_path +
-        "'>"
-    );
-    movieImage.attr("style", "width: 200px; height: 300px;");
+   //divs appended to the page 
+    $("#movie-card").append(pictureDiv, infoDiv);
 
-    var moviePlot = $("<p>" + response.results[i].overview + "</p>");
-    pictureDiv.append(movieImage);
-    infoDiv.append(movieName, moviePlot);
+   }
 
     $("#movie-card").append(pictureDiv, infoDiv);
   });
@@ -116,32 +137,33 @@ function clear() {
 }
 
 function buttonClick(event) {
-  //clears previous choices
-  clear();
+   //clears previous choices
+   clear();
 
-  //retrieves value from the list
-  var mood = $(this).attr("id");
+   //retrieves value from the list
 
-  //chooses the liquor type and movie genre to match the mood
-  var drinkAndGenre = delegateUserInput(mood);
-
-  //feeds array holding genre and liquor type
-  //calls functions to build API URL's using user specified parameters
-  var drinkAPI = createDrinkAPI(drinkAndGenre);
-  var movieAPI = createMovieAPI(drinkAndGenre);
-
-  //calls functions that find movie and cocktail information and populates the page
-  //loops through 3 times to do 3 movies and 3 drinks
-  for (var i = 0; i < 3; i++) {
-    cocktailPair(drinkAPI, drinkAndGenre, i);
-    moviePair(movieAPI, i);
-  }
-
-  //corrects for the 2 spellings of whiskey in the API so that all 3 are printed
-  if (drinkAndGenre[1] === "whiskey") {
-    var j = 0;
-    cocktailPair(drinkAPI, ["fill", "whisky"], j);
-  }
+   var mood = $(this).attr("id");
+ 
+   //chooses the liquor type and movie genre to match the mood
+   var drinkAndGenre = delegateUserInput(mood);
+ 
+   //feeds array holding genre and liquor type
+   //calls functions to build API URL's using user specified parameters
+   var drinkAPI = createDrinkAPI(drinkAndGenre);
+   var movieAPI = createMovieAPI(drinkAndGenre);
+   
+   //calls functions that find movie and cocktail information and populates the page
+   //loops through 3 times to do 3 movies and 3 drinks
+   for(var i = 0; i < 3; i++){
+     cocktailPair(drinkAPI, drinkAndGenre, i);
+     
+   }
+   moviePair(movieAPI, i);
+   //corrects for the 2 spellings of whiskey in the API so that all 3 are printed
+   if(drinkAndGenre[1] === "whiskey"){
+     var j=0;
+     cocktailPair(drinkAPI, ["fill", "whisky"], j);
+   }
 }
 
 //sets a click event for each possible mood
