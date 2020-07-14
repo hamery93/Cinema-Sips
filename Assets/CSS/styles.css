@@ -12,7 +12,8 @@ body {
   margin: 0;
 }
 
-#sidebar, #navbar {
+#sidebar,
+#navbar {
   background: rgb(15, 13, 19);
   background: linear-gradient(
     0deg,
@@ -163,6 +164,6 @@ a {
   font-weight: bold;
 }
 
-.title-bar{
-  background-color:#0f0d13;
+.title-bar {
+  background-color: #0f0d13;
 }
