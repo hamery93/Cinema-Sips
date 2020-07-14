@@ -93,7 +93,6 @@ img {
   margin-bottom: 15px;
 }
 
-
 .movie-card,
 .drink-card {
   padding: 20px;
@@ -101,10 +100,9 @@ img {
 }
 #drink-paragraph,
 #movie-paragraph {
-  background:beige;
-  opacity: .75;
+  background: beige;
+  opacity: 0.75;
 }
-
 
 h1 {
   font-family: "Rye", cursive;
@@ -146,7 +144,6 @@ p {
   border-color: cornsilk transparent transparent;
 }
 
-
 #reveal_modal {
   background-color: #faeedf;
   opacity: 0.95;
@@ -161,7 +158,7 @@ p {
   text-align: center;
 }
 
-a{
+a {
   color: #721b1f;
   font-weight: bold;
 }
