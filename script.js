@@ -167,8 +167,5 @@ function buttonClick(event) {
 }
 
 //sets a click event for each possible mood
-$("#happy").on("click", buttonClick);
-$("#sad").on("click", buttonClick);
-$("#angry").on("click", buttonClick);
-$("#scared").on("click", buttonClick);
-$("#romantic").on("click", buttonClick);
+
+$("#happy, #happy a, #sad, #sad a, #angry, #angry a, #scared, #scared a, #romantic, #romantic a").on("click", buttonClick)
