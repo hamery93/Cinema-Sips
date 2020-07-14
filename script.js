@@ -18,19 +18,19 @@ function delegateUserInput(mood) {
     pairings.push("35");
     pairings.push("tequila");
     liquor = "tequila";
-  } else if (mood === "sad") {
+  } if (mood === "sad") {
     // pairings.push("drama");
     pairings.push("18");
     pairings.push("wine");
-  } else if (mood === "scared") {
+  } if (mood === "scared") {
     // pairings.push("horror");
     pairings.push("27");
     pairings.push("rum");
-  } else if (mood === "romantic") {
+  } if (mood === "romantic") {
     // pairings.push("romantic comedy");
     pairings.push("10749");
     pairings.push("champagne");
-  } else {
+  } if (mood === "angry") {
     // pairings.push("action");
     pairings.push("28");
     pairings.push("whiskey");
