@@ -95,11 +95,10 @@ img {
 
 
 .movie-card,
-.movie-card {
+.drink-card {
   padding: 20px;
+  justify-content: center;
 }
-
-/* ! THIS ONE I ADDED WHEN I CHANGED JS TO PRINT 3 */
 #drink-paragraph,
 #movie-paragraph {
   background:beige;
