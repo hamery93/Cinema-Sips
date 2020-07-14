@@ -33,7 +33,7 @@ function delegateUserInput(mood) {
   } else {
     // pairings.push("action");
     pairings.push("28");
-    pairings.push("whisky");
+    pairings.push("whiskey");
   }
   //returns the array when this function is called
   return pairings;
@@ -62,7 +62,9 @@ function cocktailPair(apiUrl, array, i) {
   $.ajax({
     url: apiUrl,
     method: "GET",
+
   }).then(function (response) {          
+
     //variables created to store information on the drink in html elements
     var pictureDiv = $("<div class='basic-card-image text-center'>");
     var infoDiv = $("<div class ='basic-card-content content callout secondary' id='drink-paragraph'>");
@@ -77,6 +79,7 @@ function cocktailPair(apiUrl, array, i) {
     pictureDiv.append(drinkImage);
     infoDiv.append(drinkName, liquorType);
 
+    //divs appended to the page
     $("#cocktail-card").append(pictureDiv, infoDiv);
   });
 }
@@ -87,6 +90,7 @@ function moviePair(apiUrl, i) {
   $.ajax({
     url: apiUrl,
     method: "GET",
+
   }).then(function ({results}) {
     var movies = [];
     console.log(apiUrl)
@@ -105,6 +109,8 @@ function moviePair(apiUrl, i) {
     var movieName 
     var movieImage
     var moviePlot
+
+
     var pictureDiv = $("<div class='basic-card-image text-center'>");
     var infoDiv = $("<div class ='basic-card-content content callout secondary' id='movie-paragraph'>");
      
@@ -117,8 +123,11 @@ function moviePair(apiUrl, i) {
      pictureDiv.append(movieImage);
      infoDiv.append(movieName, moviePlot);
 
+   //divs appended to the page 
     $("#movie-card").append(pictureDiv, infoDiv);
+
    }
+
   });
 }
 
@@ -150,6 +159,11 @@ function buttonClick(event) {
      
    }
    moviePair(movieAPI, i);
+   //corrects for the 2 spellings of whiskey in the API so that all 3 are printed
+   if(drinkAndGenre[1] === "whiskey"){
+     var j=0;
+     cocktailPair(drinkAPI, ["fill", "whisky"], j);
+   }
 }
 
 //sets a click event for each possible mood
@@ -160,4 +174,3 @@ $("#scared").on("click", buttonClick);
 $("#romantic").on("click", buttonClick);
 
 // !!*Try to do a random one^ so that it does not just give you the same 3
-//* more than 1
